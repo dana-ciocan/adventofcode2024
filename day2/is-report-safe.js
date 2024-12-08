@@ -1,10 +1,8 @@
-export const isReportSafe = (report) => {
-    const sortedReport = report.toSorted((a, b) => a - b).join(', ');
-    const reversedReport = report.toSorted((a, b) => a - b).toReversed().join(', ');
-    const stringifiedReport = report.join(', ');
-    
+import { isReportDecrementing } from "./is-report-decrementing.js";
+import { isReportIncrementing } from "./is-report-incrementing.js";
 
-    if (sortedReport !== stringifiedReport && reversedReport !== stringifiedReport) {
+export const isReportSafe = (report) => {
+    if (!isReportIncrementing(report) && !isReportDecrementing(report)) {
         return false;
     }
 
