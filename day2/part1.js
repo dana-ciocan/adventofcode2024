@@ -1,6 +1,6 @@
 import { reports } from './input.js';
 
-const isReportSafe = (report) => {
+export const isReportSafe = (report) => {
     const sortedReport = report.toSorted((a, b) => a - b).join(', ');
     const reversedReport = report.toSorted((a, b) => a - b).toReversed().join(', ');
     const stringifiedReport = report.join(', ');
