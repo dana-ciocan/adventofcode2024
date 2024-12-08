@@ -12,5 +12,13 @@ test('should return true for reports whose levels decrement by 1', () => {
 
 test('should return false for reports whose levels do not decrement', () => {
     expect(isReportSafe([6, 1, 4, 3, 2, 1])).toBe(false);
-    expect(isReportSafe([19234, 1, 19232, 19231, 19230])).toBe(false);
+    expect(isReportSafe([19234, 19238, 19232, 19231, 19230])).toBe(false);
+});
+
+test('should return false for reports whose levels increment by more than 3', () => {
+    expect(isReportSafe([6, 10, 14, 33, 48, 90])).toBe(false);
+});
+
+test('should return false for reports containing increments of 0', () => {
+    expect(isReportSafe([1, 2, 3, 3, 4, 5])).toBe(false);
 });
