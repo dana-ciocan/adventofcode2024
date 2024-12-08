@@ -1,11 +1,4 @@
-import { isReportDecrementing } from "./is-report-decrementing.js";
-import { isReportIncrementing } from "./is-report-incrementing.js";
-
-export const isReportSafe = (report) => {
-    if (!isReportIncrementing(report) && !isReportDecrementing(report)) {
-        return false;
-    }
-
+export const areLevelDifferencesSafe = (report) => {
     const differences = report.reduce((acc, val, index) => {
         if (report[index + 1]) {
             const diff = val - report[index + 1];
