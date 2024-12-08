@@ -1,4 +1,4 @@
-import { isReportSafe } from './part1.js';
+import { isReportSafe } from './is-report-safe.js';
 
 test('should return true for reports whose levels increment by 1', () => {
     expect(isReportSafe([1, 2, 3, 4, 5, 6])).toBe(true);
