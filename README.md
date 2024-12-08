@@ -3,7 +3,7 @@ Let's have a go then
 
 - [X] Day 1 part 1
 - [X] Day 1 part 2
-- [ ] Day 2 part 1
+- [X] Day 2 part 1
 - [ ] Day 2 part 2
 - [ ] Day 3 part 1
 - [ ] Day 3 part 2
