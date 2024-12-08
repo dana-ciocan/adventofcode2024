@@ -1,0 +1,11 @@
+# What are the instructions actually telling us to do?
+
+- The list of locations is empty!
+- The Chief Historian's office has a list of locations by ID rather than name
+- Senior Historians are compiling lists of locations
+- They don't match
+- Need to pair up the numbers in the lists
+- Pair smallest number in left list with smallest number in right list
+- Make a note of the differences and add them up to get the answer to the puzzle
+
+Seems simple enough?
