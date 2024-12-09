@@ -1,4 +1,4 @@
-import { program } from "./input.js";
+import { program } from "./input.ts";
 
 const regexp = /mul\([0-9]*,[0-9]*\)/g;
 const matches = [...program.matchAll(regexp)];
