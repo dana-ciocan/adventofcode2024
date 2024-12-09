@@ -20,7 +20,7 @@ const filteredOperations = matches.map(match => match[0]).map(match => {
 }).filter(Boolean);
 
 console.log(filteredOperations.reduce((acc, val) => {
-    const numbers = val.replace('mul(', '').replace(')', '').split(',').map(num => parseInt(num, 10));
+    const numbers = val!.replace('mul(', '').replace(')', '').split(',').map(num => parseInt(num, 10));
     return acc + numbers[0] * numbers[1];
 }, 0));
 
