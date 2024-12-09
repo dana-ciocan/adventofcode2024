@@ -6,7 +6,7 @@ Let's have a go then
 - [X] Day 2 part 1
 - [X] Day 2 part 2
 - [X] Day 3 part 1
-- [ ] Day 3 part 2
+- [X] Day 3 part 2
 - [ ] Day 4 part 1
 - [ ] Day 4 part 2
 - [ ] Day 5 part 1
