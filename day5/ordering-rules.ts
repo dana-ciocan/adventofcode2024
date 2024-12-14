@@ -1,4 +1,4 @@
-const orderingRules = [[83, 94],
+export const orderingRules = [[83, 94],
 [97, 41],
 [97, 59],
 [35, 79],
