@@ -14,6 +14,6 @@ for (const update of updates) {
   }
 }
 
-const numSuccessfulUpdates = successfulUpdates.map(update => getMiddleElement(update)).reduce((acc, val) => acc + val, 0);
+const result = successfulUpdates.map(update => getMiddleElement(update)).reduce((acc, val) => acc + val, 0);
 
-console.log(numSuccessfulUpdates);
+console.log(result);
