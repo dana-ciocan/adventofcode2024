@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/dana-ciocan/adventofcode2024#readme",
   "devDependencies": {
+    "prettier": "^3.4.2",
     "vitest": "^2.1.8"
   }
 }
