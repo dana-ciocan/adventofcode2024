@@ -1,3 +1,5 @@
+PART 1
+
 - - - -
 X M A S
 - - - -
@@ -24,4 +26,7 @@ X - - -
    a. if there are, keep this X
    b. if not, discard it
 
+PART 2
 
+Find all the As, check all the vertices of the "square"
+If they are all Ms and Ss, check that the Ms and Ss are in opposite corners
