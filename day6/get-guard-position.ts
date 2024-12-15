@@ -9,4 +9,4 @@ export const getGuardPosition = (map) => {
   }
 
   return [guardRow, guardCol];
-}
+};

@@ -11,4 +11,4 @@ export const rotateGuard = (guardDirection: string): string => {
     default:
       return guardDirection;
   }
-}
+};
