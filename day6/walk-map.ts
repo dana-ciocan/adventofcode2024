@@ -2,10 +2,18 @@ import { getGuardPosition } from './get-guard-position.ts';
 import { isGuardOutOfBounds } from './is-guard-out-of-bounds.ts';
 import { rotateGuard } from './rotate-guard.ts';
 
-export const walkMap = (map: string[], removeRepeats: boolean = true) => {
+export const walkMap = (
+  map: string[],
+  removeRepeats: boolean = true,
+  addStartSquare: boolean = false,
+) => {
   let currentGuardPosition: number[] = getGuardPosition(map);
   let guardDirection: string = '^';
   let squaresSeen: string[] = [];
+
+  if (addStartSquare) {
+    squaresSeen.push(currentGuardPosition.join(','));
+  }
 
   while (!isGuardOutOfBounds(currentGuardPosition, map)) {
     const [guardRow, guardCol] = currentGuardPosition;
