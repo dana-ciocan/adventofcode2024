@@ -1,16 +1,6 @@
-export const isGuardOutOfBounds = (
-  currentGuardPosition: number[],
-  map: string[],
-) => {
-  const [guardRow, guardCol] = currentGuardPosition;
+import { getGuardPosition } from './get-guard-position.ts';
 
-  if (
-    guardRow >= 0 &&
-    guardCol >= 0 &&
-    guardRow < map.length &&
-    map[guardRow]?.[guardCol]
-  ) {
-    return false;
-  }
-  return true;
+export const isGuardOutOfBounds = (map: string[][]) => {
+  const [row, col] = getGuardPosition(map);
+  return row === -1 && col === -1;
 };

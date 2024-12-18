@@ -1,39 +1,53 @@
 import { expect, test } from 'vitest';
 import { isGuardOutOfBounds } from './is-guard-out-of-bounds';
 
-const testMap = [
-  '....#.....',
-  '.........#',
-  '..........',
-  '..#.......',
-  '.......#..',
-  '..........',
-  '.#..^.....',
-  '........#.',
-  '#.........',
-  '......#...',
+const testMapMiddle = [
+  ['.', '.', '.', '.', '#', '.', '.', '.', '.', '.'],
+  ['.', '.', '.', '.', '.', '.', '.', '.', '.', '#'],
+  ['.', '.', '.', '.', '.', '.', '.', '.', '.', '.'],
+  ['.', '.', '#', '.', '.', '.', '.', '.', '.', '.'],
+  ['.', '.', '.', '.', '.', '.', '.', '#', '.', '.'],
+  ['.', '.', '.', '.', '.', '.', '.', '.', '.', '.'],
+  ['.', '#', '.', '.', '^', '.', '.', '.', '.', '.'],
+  ['.', '.', '.', '.', '.', '.', '.', '.', '#', '.'],
+  ['#', '.', '.', '.', '.', '.', '.', '.', '.', '.'],
+  ['.', '.', '.', '.', '.', '.', '#', '.', '.', '.'],
 ];
 
 test('should return false if guard is inside the map', () => {
-  expect(isGuardOutOfBounds([2, 2], testMap)).toEqual(false);
+  expect(isGuardOutOfBounds(testMapMiddle)).toEqual(false);
 });
 
-test('should return false if guard is in the top left corner', () => {
-  expect(isGuardOutOfBounds([0, 0], testMap)).toEqual(false);
+const testMapCorner = [
+  ['.', '.', '.', '.', '#', '.', '.', '.', '.', '.'],
+  ['.', '.', '.', '.', '.', '.', '.', '.', '.', '#'],
+  ['.', '.', '.', '.', '.', '.', '.', '.', '.', '.'],
+  ['.', '.', '#', '.', '.', '.', '.', '.', '.', '.'],
+  ['.', '.', '.', '.', '.', '.', '.', '#', '.', '.'],
+  ['.', '.', '.', '.', '.', '.', '.', '.', '.', '.'],
+  ['.', '#', '.', '.', '.', '.', '.', '.', '.', '.'],
+  ['.', '.', '.', '.', '.', '.', '.', '.', '#', '.'],
+  ['#', '.', '.', '.', '.', '.', '.', '.', '.', '.'],
+  ['.', '.', '.', '.', '.', '.', '#', '.', '.', '>'],
+];
+
+test('should return false if guard is in a corner', () => {
+  expect(isGuardOutOfBounds(testMapCorner)).toEqual(false);
 });
 
-test('should return false if guard is in the top right corner', () => {
-  expect(isGuardOutOfBounds([0, 9], testMap)).toEqual(false);
-});
+const testMapVanished = [
+  ['.', '.', '.', '.', '#', '.', '.', '.', '.', '.'],
+  ['.', '.', '.', '.', '.', '.', '.', '.', '.', '#'],
+  ['.', '.', '.', '.', '.', '.', '.', '.', '.', '.'],
+  ['.', '.', '#', '.', '.', '.', '.', '.', '.', '.'],
+  ['.', '.', '.', '.', '.', '.', '.', '#', '.', '.'],
+  ['.', '.', '.', '.', '.', '.', '.', '.', '.', '.'],
+  ['.', '#', '.', '.', '.', '.', '.', '.', '.', '.'],
+  ['.', '.', '.', '.', '.', '.', '.', '.', '#', '.'],
+  ['#', '.', '.', '.', '.', '.', '.', '.', '.', '.'],
+  ['.', '.', '.', '.', '.', '.', '#', '.', '.', '.'],
+];
 
-test('should return false if guard is in the bottom right corner', () => {
-  expect(isGuardOutOfBounds([9, 9], testMap)).toEqual(false);
-});
-
-test('should return false if guard is in the bottom left corner', () => {
-  expect(isGuardOutOfBounds([9, 0], testMap)).toEqual(false);
-});
-
-test('should return true if guard is outside the map', () => {
-  expect(isGuardOutOfBounds([-1, -1], testMap)).toEqual(true);
+test('should return true if guard is not in map', () => {
+  expect(isGuardOutOfBounds(testMapVanished)).toEqual(true);
 });

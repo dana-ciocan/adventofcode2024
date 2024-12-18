@@ -1,12 +1,11 @@
-export const getGuardPosition = (map) => {
-  let guardRow;
-  let guardCol;
+export const getGuardPosition = (map: string[][]) => {
+  const guards = ['^', '>', 'v', '<'];
   for (let i = 0; i < map.length; i++) {
-    if (map[i].indexOf('^') > 0) {
-      guardRow = i;
-      guardCol = map[i].indexOf('^');
+    for (let j = 0; j < map[i].length; j++) {
+      if (guards.includes(map[i][j])) {
+        return [i, j];
+      }
     }
   }
-
-  return [guardRow, guardCol];
+  return [-1, -1];
 };
