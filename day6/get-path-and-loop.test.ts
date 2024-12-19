@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest';
-import { getPathAndRotations } from './get-path-and-rotations';
+import { getPathAndLoop } from './get-path-and-loop';
 
 const testMap = [
   '....#.....',
@@ -15,7 +15,7 @@ const testMap = [
 ];
 
 test('should return the right answer for the test map when remove repeats is off', () => {
-  const [path, rotations] = getPathAndRotations(testMap);
+  const [path, rotations] = getPathAndLoop(testMap);
   expect(path).toEqual([
     [6, 4],
     [5, 4],

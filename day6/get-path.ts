@@ -1,20 +1,15 @@
-import { findLoops } from './find-loops.ts';
 import { getGuardPosition } from './get-guard-position.ts';
 import { isGuardOutOfBounds } from './is-guard-out-of-bounds.ts';
 import { rotateGuard } from './rotate-guard.ts';
 
-export const getPathAndRotations = (
-  map: string[],
-): [number[][], number[][], boolean] => {
+export const getPath = (map: string[]): number[][] => {
   let currentGuardPosition: number[] = getGuardPosition(map);
   let guardDirection: string = '^';
   let path: number[][] = [];
-  let rotations: number[][] = [];
-  let loopedPath = false;
 
   path.push(currentGuardPosition);
 
-  while (!isGuardOutOfBounds(currentGuardPosition, map) && !loopedPath) {
+  while (!isGuardOutOfBounds(currentGuardPosition, map)) {
     const [guardRow, guardCol] = currentGuardPosition;
     let nextGuardPosition;
 
@@ -41,9 +36,7 @@ export const getPathAndRotations = (
       path.push(currentGuardPosition);
     } else {
       guardDirection = rotateGuard(guardDirection);
-      rotations.push(currentGuardPosition);
     }
-    loopedPath = findLoops(path);
   }
-  return [path, rotations, loopedPath];
+  return path;
 };

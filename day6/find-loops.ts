@@ -1,6 +1,5 @@
-export const findLoops = (path: number[][]) => {
-  const stringPath = path.map((step) => step.join(','));
-  const numTimesVisited = stringPath.reduce((acc: object, val: string) => {
+export const findLoops = (path: string[]) => {
+  const numTimesVisited = path.reduce((acc: object, val: string) => {
     if (!acc[val]) {
       acc[val] = 0;
     }

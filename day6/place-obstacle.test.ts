@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 import { findObstaclePlacements } from './find-obstacle-placements';
-import { getPathAndRotations } from './get-path-and-rotations';
+import { getPathAndLoop } from './get-path-and-loop';
 import { placeObstacle } from './place-obstacle';
 
 const testMap = [

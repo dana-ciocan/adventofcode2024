@@ -1,6 +1,6 @@
 import { test } from 'vitest';
 import { findObstaclePlacements } from './find-obstacle-placements';
-import { getPathAndRotations } from './get-path-and-rotations';
+import { getPathAndLoop } from './get-path-and-loop';
 
 const testMap = [
   '....#.....',
@@ -16,7 +16,7 @@ const testMap = [
 ];
 
 test('should return obstacle placements', () => {
-  const [path] = getPathAndRotations(testMap);
+  const [path] = getPathAndLoop(testMap);
   console.log(
     findObstaclePlacements(
       path.slice(0, path.length - 1),
