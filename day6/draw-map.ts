@@ -7,5 +7,5 @@ export const drawMap = async (maps: string[]) => {
     console.clear();
     index = index + 1;
     console.log(maps[index]);
-  }, 50);
+  }, 20);
 };
