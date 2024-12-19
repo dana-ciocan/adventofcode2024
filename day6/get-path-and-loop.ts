@@ -8,6 +8,8 @@ export const getPathAndLoop = (map: string[]): [string[], boolean] => {
   let guardDirection: string = '^';
   let path: string[] = [];
   let loopedPath = false;
+  const numTimesVisited: object = {};
+  let numLoops = 0;
 
   path.push(`${currentGuardPosition[0]},${currentGuardPosition[1]}`);
 
@@ -36,10 +38,25 @@ export const getPathAndLoop = (map: string[]): [string[], boolean] => {
     if (nextPosition !== '#') {
       currentGuardPosition = nextGuardPosition;
       path.push(`${currentGuardPosition[0]},${currentGuardPosition[1]}`);
+      if (
+        !numTimesVisited[
+          `${currentGuardPosition[0]},${currentGuardPosition[1]}`
+        ]
+      ) {
+        numTimesVisited[
+          `${currentGuardPosition[0]},${currentGuardPosition[1]}`
+        ] = 0;
+      }
+      numTimesVisited[
+        `${currentGuardPosition[0]},${currentGuardPosition[1]}`
+      ] += 1;
     } else {
       guardDirection = rotateGuard(guardDirection);
     }
-    loopedPath = findLoops(path);
+    numLoops++;
+    if (numLoops % 500 === 0) {
+      loopedPath = findLoops(numTimesVisited);
+    }
   }
   return [path, loopedPath];
 };
