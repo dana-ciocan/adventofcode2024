@@ -1,24 +1,37 @@
 import { calculations } from './input.ts';
+import { processCalculation } from './process-calculation.ts';
 
+let result = 0;
 for (const calculation of calculations) {
   const [total, terms] = calculation;
+  const combinations = {};
 
-  console.log(`${terms} have to make ${total}`);
-
-  const numOperations = (terms as number[]).length - 1;
-  const operations: string[] = [];
-  let remainder: number = total as number;
-
-  for (let i = 0; i < numOperations; i++) {
-    if ((total as number) % terms[i] === 0) {
-      operations.push('*');
-      remainder = remainder / terms[i];
-    } else {
-      operations.push('+');
-      remainder = remainder - terms[i];
+  if (!combinations[(terms as number[]).length]) {
+    combinations[(terms as number[]).length] = [];
+    for (let i = 0; i < Math.pow(2, (terms as number[]).length - 1); i++) {
+      combinations[(terms as number[]).length].push(
+        i
+          .toString(2)
+          .padStart((terms as number[]).length - 1, '0')
+          .replaceAll('0', '*')
+          .replaceAll('1', '+')
+          .split(''),
+      );
     }
   }
+  const operatorSets = combinations[(terms as number[]).length];
 
-  console.log(operations);
-  console.log(remainder);
+  for (const operators of operatorSets) {
+    let calcArray = [];
+    for (let i = 0; i < operators.length; i++) {
+      calcArray.push(terms[i], operators[i]);
+    }
+    calcArray.push(terms[terms.length - 1]);
+
+    if (processCalculation(calcArray) === total) {
+      result += total;
+      break;
+    }
+  }
 }
+console.log(result);
